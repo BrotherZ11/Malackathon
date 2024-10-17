@@ -7,6 +7,6 @@ import Malackathon.Malackathon.entities.Embalses;
 import org.springframework.data.jpa.repository.JpaRepository;
 import Malackathon.Malackathon.entities.Embalses;
 
-public interface RepositorioEmbalse extends JpaRepository<Embalses, Long> {
+public interface RepositorioEmbalses extends JpaRepository<Embalses, Long> {
     
 }

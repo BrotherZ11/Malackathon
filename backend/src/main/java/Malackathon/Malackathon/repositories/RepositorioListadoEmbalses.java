@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import Malackathon.Malackathon.entities.ListadoEmbalses;
 
-public interface RepositorioListadoEmbalse extends JpaRepository<ListadoEmbalses, Long> {
+public interface RepositorioListadoEmbalses extends JpaRepository<ListadoEmbalses, Long> {
     
 
 }
