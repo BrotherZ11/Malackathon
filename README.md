@@ -7,7 +7,7 @@ Base de datos:
 En la base de datos, se ha creado una tabla intermedia llamada EMBALSES_RELACIONADOS, donde se relaciona la tabla EMBALSES a través del id y el nombre del embalse junto con la tabla LISTADO a través del codigo y el nombre del embalse, para ello se hace un join de ambas tablas y se extrae la información correspondiente.
 
 Frontend:
-Para el frontend se usará React junto con Bootstrap, se utilizará axios para las diferentes llamadas al backend.
+Para el frontend se usará React junto con Bootstrap, se utilizará axios para las diferentes llamadas al backend, se mostrara 3 inputs para que el usuario pueda introducir las coordinadas así como la distancia, luego se mostrara en el mapa los embalses en ese radio y la información de los mismos, pudiendo filtrarlo haciendo click en los diferentes checkpoint que desea, además podrá ajustar el rango para que vaya aumentando o disminuyendo.
 
 Backend:
 Para el backend se usa Spring Boot, usando el modelo vista controlador, donde se hace las usa las llamadas a la api rest, para controlar las llamadas, se limitará las tasas de la misma evitando así ataques DoS, además se añadirá CAPTCHA cada vez que un usuario quiera buscar los embalses, para validar los diferentes usuario y las solicitudes

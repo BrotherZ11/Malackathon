@@ -17,17 +17,18 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// URL de tus servicios REST en ORDS
+// URL los servicios REST en ORDS
 const EMBALSES_URL = "https://geeaebb849cba69-hackathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/embalsesutf8/";
 const LISTADO_EMBALSES_URL = "https://geeaebb849cba69-hackathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadoutf83/";
 const AGUA_URL = "https://geeaebb849cba69-hackathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/agua/";
+const EMBALSES_RELACIONADOS = "https://geeaebb849cba69-hackathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/embalses_relacionados/";
 
 // Endpoint para obtener todos los embalses
 app.get('/api/embalses/all', async (req, res) => {
   try {
     // Hacer petición al endpoint de LISTADO_EMBALSES
     const embalsesResponse = await axios.get(LISTADO_EMBALSES_URL);
-    const embalsesData = embalsesResponse.data.items; // Asegúrate que esto sea el formato correcto
+    const embalsesData = embalsesResponse.data.items; 
 
     // Enviar respuesta con los embalses
     res.json(embalsesData);
