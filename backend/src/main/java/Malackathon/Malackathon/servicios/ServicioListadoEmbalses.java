@@ -1,4 +1,4 @@
-package siisquad.rutinas.servicios;
+package Malackathon.Malackathon.servicioListadoEmbalses;
 
 import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import siisquad.rutinas.dtos.AsignacionEntrenamientoDTO;
-import siisquad.rutinas.dtos.RutinaDTO;
+import Malackathon.Malackathon.dtos.AsignacionEntrenamientoDTO;
+import Malackathon.Malackathon.dtos.RutinaDTO;
 
 import java.net.URI;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class ServicioEntrena {
+public class ServicioListadoEmbalses {
 
     private final int port=9001;
 
@@ -27,7 +27,7 @@ public class ServicioEntrena {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public ServicioEntrena(RestTemplate restTemplate)
+    public ServicioListadoEmbalses(RestTemplate restTemplate)
     {
         this.restTemplate = restTemplate;
     }

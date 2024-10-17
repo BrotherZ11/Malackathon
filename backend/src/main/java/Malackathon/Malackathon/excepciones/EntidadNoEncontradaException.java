@@ -1,4 +1,4 @@
-package siisquad.rutinas.excepciones;
+package Malackathon.Malackathon.excepciones;
 
 public class EntidadNoEncontradaException extends RuntimeException {
     public EntidadNoEncontradaException() {

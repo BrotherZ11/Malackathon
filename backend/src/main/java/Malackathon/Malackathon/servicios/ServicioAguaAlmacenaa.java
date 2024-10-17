@@ -1,4 +1,4 @@
-package siisquad.rutinas.servicios;
+package Malackathon.Malackathon.servicios;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import siisquad.rutinas.excepciones.EntidadExistenteException;
-import siisquad.rutinas.excepciones.EntidadNoEncontradaException;
-import siisquad.rutinas.repositories.RepositorioRutina;
-import siisquad.rutinas.entities.Rutina;
+import Malackathon.Malackathon.excepciones.EntidadExistenteException;
+import Malackathon.Malackathon.excepciones.EntidadNoEncontradaException;
+import Malackathon.Malackathon.repositories.RepositorioRutina;
+import Malackathon.Malackathon.entities.Rutina;
 
 @Service
 @Transactional
-public class ServicioRutina {
+public class ServicioAguaAlmacenaa {
     private final RepositorioRutina repositorioRutina;
 
     @Autowired

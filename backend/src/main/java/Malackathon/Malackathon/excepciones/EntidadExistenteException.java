@@ -1,4 +1,4 @@
-package siisquad.rutinas.excepciones;
+package Malackathon.Malackathon.excepciones;
 
 public class EntidadExistenteException extends RuntimeException {
     private static final int STATUS_CODE = 409;
