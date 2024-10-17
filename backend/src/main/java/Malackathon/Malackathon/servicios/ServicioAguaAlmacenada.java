@@ -16,63 +16,36 @@ import Malackathon.Malackathon.entities.AguaAlmacenada;
 @Service
 @Transactional
 public class ServicioAguaAlmacenada {
-    private final RepositorioAguaAlmacenada repositorioAguaAlmacenada;
-
     @Autowired
-    public ServicioAguaAlmacenada(RepositorioAguaAlmacenada repositorioAguaAlmacenada) {
-        this.repositorioAguaAlmacenada = repositorioAguaAlmacenada;
+    private RepositorioAguaAlmacenada RepositorioaguaAlmacenada;
+
+    public List<AguaAlmacenada> getAllAguaAlmacenada() {
+        return RepositorioaguaAlmacenada.findAll();
     }
 
-    /**
-     * Obtiene AguaAlmacenada por id
-     * @param id Id de la AguaAlmacenada
-     * @Throws AguaAlmacenadaNoEncontrada si la AguaAlmacenada no existe
-     * @return AguaAlmacenada
-     */
-    public AguaAlmacenada getAguaAlmacenada(Long id) {
-        Optional<AguaAlmacenada> AguaAlmacenada = repositorioAguaAlmacenada.findById(id);
-        return AguaAlmacenada.orElseThrow(() -> new EntidadNoEncontradaException());
+    public Optional<AguaAlmacenada> getAguaAlmacenadaById(Long id) {
+        return RepositorioaguaAlmacenada.findById(id);
     }
 
-    public Long addAguaAlmacenada(Long idEntrenador, AguaAlmacenada AguaAlmacenada){
-        if (repositorioAguaAlmacenada.existsByNombre(AguaAlmacenada.getNombre())) {
-            throw new EntidadExistenteException("AguaAlmacenada ya existe");
-        }
-        AguaAlmacenada.setEntrenador(idEntrenador.intValue());
-        repositorioAguaAlmacenada.save(AguaAlmacenada);
-        return AguaAlmacenada.getId();
+    public AguaAlmacenada saveAguaAlmacenada(AguaAlmacenada aguaAlmacenada) {
+        return RepositorioaguaAlmacenada.save(aguaAlmacenada);
     }
 
-    /**
-     * Actualiza AguaAlmacenada en la base de datos
-     * @param AguaAlmacenada AguaAlmacenada a actualizar
-     * @Throws AguaAlmacenadaNoEncontrada si la AguaAlmacenada no existe previamente
-     * @return AguaAlmacenada actualizada
-     */
-    public AguaAlmacenada updateAguaAlmacenada(AguaAlmacenada AguaAlmacenada) {
-        return repositorioAguaAlmacenada.save(AguaAlmacenada);
+    public Optional<AguaAlmacenada> updateAguaAlmacenada(Long id, AguaAlmacenada aguaAlmacenadaDetails) {
+        return RepositorioaguaAlmacenada.findById(id)
+            .map(aguaAlmacenada -> {
+                aguaAlmacenada.setFecha(aguaAlmacenadaDetails.getFecha());
+                aguaAlmacenada.setAguaActual(aguaAlmacenadaDetails.getAguaActual());
+                return RepositorioaguaAlmacenada.save(aguaAlmacenada);
+            });
     }
 
-    /**
-     * Elimina AguaAlmacenada de la base de datos
-     * @param id Id de la AguaAlmacenada
-     * @Throws AguaAlmacenadaNoEncontrada si la AguaAlmacenada no existe previamente
-     */
-    public void deleteAguaAlmacenada(Long id) {
-        repositorioAguaAlmacenada.deleteById(id);
+    public boolean deleteAguaAlmacenada(Long id) {
+        return RepositorioaguaAlmacenada.findById(id)
+            .map(aguaAlmacenada -> {
+                RepositorioaguaAlmacenada.delete(aguaAlmacenada);
+                return true;
+            })
+            .orElse(false);
     }
-
-    /**
-     * Obtiene todas las AguaAlmacenadas de un Entrenador
-     * @param entrenadorId Id del Entrenador
-     * @throws
-     * @return Lista de AguaAlmacenadas asociadas al Entrenador
-     */
-    public List<AguaAlmacenada> getAguaAlmacenadasPorEntrenador(Long entrenadorId) {
-        return repositorioAguaAlmacenada.findByEntrenador(Long.valueOf(entrenadorId)).get();
-    }
-
-
-
-
 }

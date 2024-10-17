@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import Malackathon.Malackathon.dtos.AsignacionEntrenamientoDTO;
 import Malackathon.Malackathon.dtos.RutinaDTO;
+import Malackathon.Malackathon.entities.ListadoEmbalses;
 
 import java.net.URI;
 import java.util.List;
@@ -20,35 +21,56 @@ import java.util.Set;
 @Service
 public class ServicioListadoEmbalses {
 
-    private final int port=9001;
+     @Autowired
+    private RepositorioListadoEmbalses RepositoriolistadoEmbalses;
 
-    private final String host = "localhost";
-
-    private final RestTemplate restTemplate;
-
-    @Autowired
-    public ServicioListadoEmbalses(RestTemplate restTemplate)
-    {
-        this.restTemplate = restTemplate;
+    public List<ListadoEmbalses> getAllListadoEmbalses() {
+        return RepositoriolistadoEmbalses.findAll();
     }
 
-    /**
-     * Obtiene la asignacion del cliente idCliente con su entrenador si existe
-     * @param idCliente
-     * @param token supuestamente viene ya con Bearer
-     * @return
-     */
-    public Optional<List<AsignacionEntrenamientoDTO>> getEntrenaPorCliente(Long idCliente, String token)
-    {
-        // Define las cabeceras de la solicitud y añade el token JWT
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", token);
-
-        var peticion = RequestEntity.get("http://localhost:"+port+"/entrena?cliente="+idCliente.intValue()).headers(headers).build();
-        var respuesta = restTemplate.exchange(peticion,
-                new ParameterizedTypeReference<List<AsignacionEntrenamientoDTO>>() {});
-        return Optional.ofNullable(respuesta.getBody());
+    public Optional<ListadoEmbalses> getListadoEmbalsesById(Long id) {
+        return RepositoriolistadoEmbalses.findById(id);
     }
+
+    public ListadoEmbalses saveListadoEmbalses(ListadoEmbalses listadoEmbalses) {
+        return RepositoriolistadoEmbalses.save(listadoEmbalses);
+    }
+
+    public Optional<ListadoEmbalses> updateListadoEmbalses(Long id, ListadoEmbalses listadoEmbalsesDetails) {
+        return RepositoriolistadoEmbalses.findById(id)
+            .map(listadoEmbalses -> {
+                listadoEmbalses.setCodigo(listadoEmbalsesDetails.getCodigo());
+                listadoEmbalses.setNombre(listadoEmbalsesDetails.getNombre());
+                listadoEmbalses.setEmbalse(listadoEmbalsesDetails.getEmbalse());
+                listadoEmbalses.setX(listadoEmbalsesDetails.getX());
+                listadoEmbalses.setY(listadoEmbalsesDetails.getY());
+                listadoEmbalses.setDemarc(listadoEmbalsesDetails.getDemarc());
+                listadoEmbalses.setCauce(listadoEmbalsesDetails.getCauce());
+                listadoEmbalses.setGoogle(listadoEmbalsesDetails.getGoogle());
+                listadoEmbalses.setOpenstreetmap(listadoEmbalsesDetails.getOpenstreetmap());
+                listadoEmbalses.setWikidata(listadoEmbalsesDetails.getWikidata());
+                listadoEmbalses.setProvincia(listadoEmbalsesDetails.getProvincia());
+                listadoEmbalses.setCcaa(listadoEmbalsesDetails.getCcaa());
+                listadoEmbalses.setTipo(listadoEmbalsesDetails.getTipo());
+                listadoEmbalses.setTitular(listadoEmbalsesDetails.getTitular());
+                listadoEmbalses.setUso(listadoEmbalsesDetails.getUso());
+                listadoEmbalses.setCotaCoron(listadoEmbalsesDetails.getCotaCoron());
+                listadoEmbalses.setAltCimien(listadoEmbalsesDetails.getAltCimien());
+                listadoEmbalses.setInforme(listadoEmbalsesDetails.getInforme());
+                return RepositoriolistadoEmbalses.save(listadoEmbalses);
+            });
+    }
+
+    public boolean deleteListadoEmbalses(Long id) {
+        return RepositoriolistadoEmbalses.findById(id)
+            .map(listadoEmbalses -> {
+                RepositoriolistadoEmbalses.delete(listadoEmbalses);
+                return true;
+            })
+            .orElse(false);
+    }
+}
+Las
 
 
 

@@ -16,34 +16,37 @@ public class ServicioEmbalses {
     private final RepositorioEmbalses repositorioEmbalses;
 
     @Autowired
-    public ServicioEmbalses(RepositorioEmbalses repositorioEmbalses) {
-        this.repositorioEmbalses = repositorioEmbalses;
-    }
-    public Ejercicio getEjercicio(Long id){
-        Optional<Ejercicio> ejercicio = repositorioEmbalses.findById(id);
-        return ejercicio.orElseThrow(() -> new EntidadNoEncontradaException());
+    private RepositorioEmbalses RepositorioEmbalses;
+
+    public List<Embalses> getAllEmbalses() {
+        return RepositorioEmbalses.findAll();
     }
 
-    public Long addEjercicio(Long idEntrenador, Ejercicio ejercicio){
-        if (repositorioEmbalses.existsByNombre(ejercicio.getNombre())) {
-            throw new EntidadExistenteException("Ejercicio ya existe");
-        }
-        ejercicio.setEntrenador(idEntrenador.intValue());
-		repositorioEmbalses.save(ejercicio);
-		return ejercicio.getId();
+    public Optional<Embalses> getEmbalsesById(Long id) {
+        return RepositorioEmbalses.findById(id);
     }
 
-    public Ejercicio updateEjercicio(Ejercicio ejercicio) {
-        return repositorioEmbalses.save(ejercicio);
+    public Embalses saveEmbalses(Embalses embalse) {
+        return RepositorioEmbalses.save(embalse);
     }
 
-    public void deleteEjercicio(Long id) {
-        repositorioEmbalses.deleteById(id);
+    public Optional<Embalses> updateEmbalses(Long id, Embalses embalseDetails) {
+        return RepositorioEmbalses.findById(id)
+            .map(embalse -> {
+                embalse.setAmbitoNombre(embalseDetails.getAmbitoNombre());
+                embalse.setEmbalseNombre(embalseDetails.getEmbalseNombre());
+                embalse.setAguaTotal(embalseDetails.getAguaTotal());
+                embalse.setElectricoFlag(embalseDetails.getElectricoFlag());
+                return RepositorioEmbalses.save(embalse);
+            });
     }
 
-    public List<Ejercicio> getEjerciciosPorEntrenador(Long id){
-        return repositorioEmbalses.findByEntrenador(Long.valueOf(id)).get();
+    public boolean deleteEmbalses(Long id) {
+        return RepositorioEmbalses.findById(id)
+            .map(embalse -> {
+                RepositorioEmbalses.delete(embalse);
+                return true;
+            })
+            .orElse(false);
     }
-
-
 }
