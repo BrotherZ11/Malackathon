@@ -35,7 +35,7 @@ public class ServicioAguaAlmacenada {
         return RepositorioaguaAlmacenada.findById(id)
             .map(aguaAlmacenada -> {
                 aguaAlmacenada.setFecha(aguaAlmacenadaDetails.getFecha());
-                aguaAlmacenada.setAguaActual(aguaAlmacenadaDetails.getAguaActual());
+                //aguaAlmacenada.setAguaActual(aguaAlmacenadaDetails.getAguaActual());
                 return RepositorioaguaAlmacenada.save(aguaAlmacenada);
             });
     }

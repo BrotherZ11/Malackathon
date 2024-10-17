@@ -1,4 +1,4 @@
-package Malackathon.Malackathon.servicioListadoEmbalses;
+package Malackathon.Malackathon.servicios;
 
 import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import Malackathon.Malackathon.dtos.AsignacionEntrenamientoDTO;
-import Malackathon.Malackathon.dtos.RutinaDTO;
+import Malackathon.Malackathon.dtos.*;
 import Malackathon.Malackathon.entities.ListadoEmbalses;
 import Malackathon.Malackathon.repositories.RepositorioListadoEmbalses;
 

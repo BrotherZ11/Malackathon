@@ -13,7 +13,6 @@ import Malackathon.Malackathon.repositories.RepositorioEmbalses;
 @Service
 @Transactional
 public class ServicioEmbalses {
-    private final RepositorioEmbalses repositorioEmbalses;
 
     @Autowired
     private RepositorioEmbalses RepositorioEmbalses;
@@ -29,17 +28,6 @@ public class ServicioEmbalses {
 
     public Embalses saveEmbalses(Embalses embalse) {
         return RepositorioEmbalses.save(embalse);
-    }
-
-    public Optional<Embalses> updateEmbalses(Long id, Embalses embalseDetails) {
-        return RepositorioEmbalses.findById(id)
-            .map(embalse -> {
-                embalse.setAmbitoNombre(embalseDetails.getAmbitoNombre());
-                embalse.setEmbalseNombre(embalseDetails.getEmbalseNombre());
-                embalse.setAguaTotal(embalseDetails.getAguaTotal());
-                embalse.setElectricoFlag(embalseDetails.getElectricoFlag());
-                return RepositorioEmbalses.save(embalse);
-            });
     }
 
     public boolean deleteEmbalses(Long id) {
