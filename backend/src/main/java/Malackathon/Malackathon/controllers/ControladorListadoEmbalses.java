@@ -20,7 +20,7 @@ public class ControladorListadoEmbalses {
 
     // Endpoint para obtener embalses cercanos a unas coordenadas dadas
     @GetMapping("/cercanos")
-    public ResponseEntity<List<ListadoEmbalses>> getEmbalsesCercanos(
+    public ResponseEntity<List<ListadoEmbalses>> getListadoEmbalsesByXY(
             @RequestParam double posicionXYDTO) {
         List<ListadoEmbalses> embalsesCercanos = listadoEmbalsesServ.getListadoEmbalsesByXY(posicionXYDTO);
         return ResponseEntity.ok(embalsesCercanos);

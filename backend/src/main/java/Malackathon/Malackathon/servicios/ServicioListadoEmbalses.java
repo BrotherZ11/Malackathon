@@ -46,11 +46,11 @@ public class ServicioListadoEmbalses {
             .map(listadoEmbalses -> {
                 listadoEmbalses.setCodigo(listadoEmbalsesDetails.getCodigo());
                 listadoEmbalses.setNombre(listadoEmbalsesDetails.getNombre());
-                listadoEmbalses.setEmbalse(listadoEmbalsesDetails.getEmbalse());
+                //listadoEmbalses.setEmbalse(listadoEmbalsesDetails.getEmbalse());
                 listadoEmbalses.setX(listadoEmbalsesDetails.getX());
                 listadoEmbalses.setY(listadoEmbalsesDetails.getY());
                 listadoEmbalses.setDemarc(listadoEmbalsesDetails.getDemarc());
-                listadoEmbalses.setCauce(listadoEmbalsesDetails.getCauce());
+                //listadoEmbalses.setCauce(listadoEmbalsesDetails.getCauce());
                 listadoEmbalses.setGoogle(listadoEmbalsesDetails.getGoogle());
                 listadoEmbalses.setOpenstreetmap(listadoEmbalsesDetails.getOpenstreetmap());
                 listadoEmbalses.setWikidata(listadoEmbalsesDetails.getWikidata());
@@ -59,8 +59,8 @@ public class ServicioListadoEmbalses {
                 listadoEmbalses.setTipo(listadoEmbalsesDetails.getTipo());
                 listadoEmbalses.setTitular(listadoEmbalsesDetails.getTitular());
                 listadoEmbalses.setUso(listadoEmbalsesDetails.getUso());
-                listadoEmbalses.setCotaCoron(listadoEmbalsesDetails.getCotaCoron());
-                listadoEmbalses.setAltCimien(listadoEmbalsesDetails.getAltCimien());
+                //listadoEmbalses.setCotaCoron(listadoEmbalsesDetails.getCotaCoron());
+                //listadoEmbalses.setAltCimien(listadoEmbalsesDetails.getAltCimien());
                 listadoEmbalses.setInforme(listadoEmbalsesDetails.getInforme());
                 return RepositoriolistadoEmbalses.save(listadoEmbalses);
             });
@@ -74,10 +74,4 @@ public class ServicioListadoEmbalses {
             })
             .orElse(false);
     }
-}
-Las
-
-
-
-
 }
