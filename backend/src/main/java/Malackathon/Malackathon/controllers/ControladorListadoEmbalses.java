@@ -22,7 +22,7 @@ public class ControladorListadoEmbalses {
     @GetMapping("/cercanos")
     public ResponseEntity<List<ListadoEmbalses>> getEmbalsesCercanos(
             @RequestParam double posicionXYDTO) {
-        List<ListadoEmbalses> embalsesCercanos = listadoEmbalsesServ.getEmbalsesByXY(posicionXYDTO);
+        List<ListadoEmbalses> embalsesCercanos = listadoEmbalsesServ.getListadoEmbalsesByXY(posicionXYDTO);
         return ResponseEntity.ok(embalsesCercanos);
     }
 }

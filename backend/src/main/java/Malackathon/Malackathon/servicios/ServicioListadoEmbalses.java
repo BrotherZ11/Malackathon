@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import Malackathon.Malackathon.dtos.AsignacionEntrenamientoDTO;
 import Malackathon.Malackathon.dtos.RutinaDTO;
 import Malackathon.Malackathon.entities.ListadoEmbalses;
+import Malackathon.Malackathon.repositories.RepositorioListadoEmbalses;
 
 import java.net.URI;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ServicioListadoEmbalses {
         return RepositoriolistadoEmbalses.findAll();
     }
 
-    public Optional<ListadoEmbalses> getListadoEmbalsesByXY(Long posicionXYDTO) {
+    public List<ListadoEmbalses> getListadoEmbalsesByXY(double posicionXYDTO) {
         return RepositoriolistadoEmbalses.getListadoEmbalsesByXY(posicionXYDTO);
     }
 

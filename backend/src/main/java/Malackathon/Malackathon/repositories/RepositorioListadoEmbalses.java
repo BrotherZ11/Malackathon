@@ -1,6 +1,7 @@
 package Malackathon.Malackathon.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,5 +13,7 @@ public interface RepositorioListadoEmbalses extends JpaRepository<ListadoEmbalse
     
     @Query(value = "SELECT * FROM listado_embalses " +
            "WHERE X =", nativeQuery = true)
-    List<ListadoEmbalses> findEmbalsesWithinRadius(@Param("posicionXYDTO") Long posicionXYDTO);
+    List<ListadoEmbalses> getEmbalsesByXY(@Param("posicionXYDTO") Long posicionXYDTO);
+
+    List<ListadoEmbalses> getListadoEmbalsesByXY(double posicionXYDTO);
 }
