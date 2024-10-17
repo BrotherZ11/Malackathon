@@ -1,12 +1,12 @@
-package siisquad.rutinas;
+package Malackathon.Malackathon;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import siisquad.rutinas.repositories.RepositorioRutina;
-import siisquad.rutinas.repositories.RepositorioEjercicio;
-import siisquad.rutinas.repositories.RepositorioEjercicioEnRutina;
+import Malackathon.Malackathon.repositories.RepositorioRutina;
+import Malackathon.Malackathon.repositories.RepositorioEjercicio;
+import Malackathon.Malackathon.repositories.RepositorioEjercicioEnRutina;
 
 @Component
 public class LineaComandos implements CommandLineRunner {
