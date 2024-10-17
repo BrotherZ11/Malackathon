@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Agua_almacenada {
+public class AguaAlmacenada {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -27,7 +27,7 @@ public class Agua_almacenada {
     // toString
     @Override
     public String toString() {
-        return "Rutina{" +
+        return "AguaAlmacenada{" +
                 "id=" + id +
                 ", agua_actual='" + agua_actual + '\'' +
                 ", fecha='" + fecha + '\'' +
@@ -37,7 +37,7 @@ public class Agua_almacenada {
     // equals and hashCode
     @Override
     public boolean equals(Object o) {
-        return o instanceof Agua_almacenada r && r.getId().equals(this.id);
+        return o instanceof AguaAlmacenada r && r.getId().equals(this.id);
     }
 
     @Override
