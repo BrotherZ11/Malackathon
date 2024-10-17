@@ -28,6 +28,10 @@ public class ServicioListadoEmbalses {
         return RepositoriolistadoEmbalses.findAll();
     }
 
+    public Optional<ListadoEmbalses> getListadoEmbalsesByXY(Long posicionXYDTO) {
+        return RepositoriolistadoEmbalses.getListadoEmbalsesByXY(posicionXYDTO);
+    }
+
     public Optional<ListadoEmbalses> getListadoEmbalsesById(Long id) {
         return RepositoriolistadoEmbalses.findById(id);
     }

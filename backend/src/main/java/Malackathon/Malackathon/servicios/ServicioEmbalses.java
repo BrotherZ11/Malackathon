@@ -21,6 +21,7 @@ public class ServicioEmbalses {
     public List<Embalses> getAllEmbalses() {
         return RepositorioEmbalses.findAll();
     }
+    
 
     public Optional<Embalses> getEmbalsesById(Long id) {
         return RepositorioEmbalses.findById(id);
